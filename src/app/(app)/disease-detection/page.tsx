@@ -10,8 +10,8 @@ import { useToast } from '@/hooks/use-toast';
 import { ShieldAlert, ListChecks, Activity, HelpCircle, Pill } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { medicineInfo, getMedicineInfo, MedicineInfo } from '@/lib/data';
-import Image from 'next/image';
+import { getMedicineInfo } from '@/lib/data'; // MedicineInfo type no longer needed here
+// Image import removed
 import { LoadingSpinner } from '@/components/shared/LoadingSpinner';
 
 export default function DiseaseDetectionPage() {
@@ -140,22 +140,14 @@ export default function DiseaseDetectionPage() {
                 <AccordionItem value={`item-${index}`} key={index}>
                   <AccordionTrigger className="hover:no-underline">
                     <div className="flex items-center gap-3">
-                       <div className="w-16 h-16 relative rounded-md overflow-hidden flex-shrink-0 bg-muted">
-                        <Image 
-                          src={`https://placehold.co/100x100.png`} 
-                          alt={info.name}
-                          data-ai-hint={info.imageHint}
-                          fill={true}
-                          style={{objectFit: 'cover'}}
-                        />
-                       </div>
+                       {/* Image div removed */}
                        <div>
                         <h4 className="text-lg font-semibold text-left">{info.name}</h4>
                         <p className="text-sm text-muted-foreground text-left">Type: {info.type}</p>
                        </div>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="space-y-3 pl-4 pt-2 pb-4 border-l-2 ml-[calc(1.5rem+8px)]"> {/* 1.5rem is approx width of icon container */}
+                  <AccordionContent className="space-y-3 pl-4 pt-2 pb-4"> {/* Removed ml adjustment */}
                     <div>
                       <h5 className="font-semibold">Usage:</h5>
                       <p className="text-sm text-muted-foreground">{info.usage}</p>

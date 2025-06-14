@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { classifyRice, type ClassifyRiceOutput } from '@/ai/flows/classify-rice';
 import { useToast } from '@/hooks/use-toast';
-import { BarChart, Lightbulb, ChefHat, Percent, Tag, ThumbsUp, ThumbsDown, Info } from 'lucide-react';
+import { BarChart, ChefHat, Percent, Tag, ThumbsUp, ThumbsDown, Info } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { cuisineIdeas, getCuisineIdeas, CuisineIdea } from '@/lib/data';
-import Image from 'next/image';
+import { getCuisineIdeas } from '@/lib/data'; // CuisineIdea type no longer needed here
+// Image import removed
 import { LoadingSpinner } from '@/components/shared/LoadingSpinner';
 import { Label } from '@/components/ui/label';
 
@@ -123,20 +123,12 @@ export default function RiceClassificationPage() {
           </CardHeader>
           <CardContent className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentCuisineIdeas.map((idea, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow">
-                <div className="relative w-full h-40">
-                  <Image 
-                    src={`https://placehold.co/300x200.png`} 
-                    alt={idea.name}
-                    data-ai-hint={idea.imageHint}
-                    fill={true}
-                    style={{objectFit: 'cover'}}
-                  />
-                </div>
+              <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+                {/* Image div removed */}
                 <CardHeader>
                   <CardTitle className="text-xl font-headline">{idea.name}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <p className="text-sm text-muted-foreground font-body">{idea.description}</p>
                 </CardContent>
               </Card>

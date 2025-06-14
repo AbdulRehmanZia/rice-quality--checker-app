@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/sidebar';
 import { LayoutDashboard, Wheat, SearchCheck, HeartPulse, LogOut, Settings, UserCircle } from 'lucide-react';
 import Link from 'next/link';
-import { Skeleton } from '@/components/ui/skeleton';
+// Skeleton import removed as it was part of loading state only
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
@@ -60,7 +60,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   const getInitials = (email: string) => {
     const parts = email.split('@')[0].split(/[._-]/);
-    if (parts.length > 1) {
+    if (parts.length > 1 && parts[0] && parts[1]) {
       return (parts[0][0] + parts[1][0]).toUpperCase();
     }
     return email.substring(0, 2).toUpperCase();
@@ -102,7 +102,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="w-full justify-start gap-2 px-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:w-auto">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={`https://placehold.co/100x100.png?text=${getInitials(currentUser.email)}`} alt={currentUser.email} data-ai-hint="abstract geometric"/>
+                  <AvatarImage alt={currentUser.email} /> {/* src and data-ai-hint removed */}
                   <AvatarFallback>{getInitials(currentUser.email)}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col items-start group-data-[collapsible=icon]:hidden">
