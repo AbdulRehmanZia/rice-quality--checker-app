@@ -93,13 +93,23 @@ export default function HealthCheckPage() {
               </div>
             </div>
             
-            <Progress value={healthResult.healthScore} className="h-4 [&>div]:bg-gradient-to-r [&>div]:from-red-500 [&>div]:via-yellow-500 [&>div]:to-green-500" />
+            <Progress 
+              value={healthResult.healthScore} 
+              className="h-4 rounded-full overflow-hidden bg-muted"
+              // The indicator itself will be styled by the custom class if needed, or by Progress's internal Indicator styling
+            >
+              <div 
+                className="h-full transition-all duration-500 ease-out bg-gradient-to-r from-red-500 via-yellow-500 to-green-500" 
+                style={{ width: `${healthResult.healthScore}%`}} 
+              />
+            </Progress>
+
 
             <div className={`p-4 border-l-4 rounded-md bg-opacity-10 ${
-                healthResult.healthScore >= 80 ? 'border-green-500 bg-green-500/20' : /* Adjusted opacity */
-                healthResult.healthScore >= 60 ? 'border-lime-500 bg-lime-500/20' : /* Adjusted opacity */
-                healthResult.healthScore >= 40 ? 'border-yellow-500 bg-yellow-500/20' : /* Adjusted opacity */
-                'border-red-500 bg-red-500/20' /* Adjusted opacity */
+                healthResult.healthScore >= 80 ? 'border-green-500 bg-green-500/20' : 
+                healthResult.healthScore >= 60 ? 'border-lime-500 bg-lime-500/20' : 
+                healthResult.healthScore >= 40 ? 'border-yellow-500 bg-yellow-500/20' : 
+                'border-red-500 bg-red-500/20'
               }`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Info className={`h-5 w-5 ${healthStatus.color}`} />

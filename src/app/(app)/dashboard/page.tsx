@@ -10,30 +10,21 @@ import { ArrowRight, Wheat, SearchCheck, HeartPulse, Lightbulb } from 'lucide-re
 const featureCards = [
   {
     title: "Rice Classification",
-    description: "Got rice? Let our AI instantly tell you if it's long, short, or broken. Uncover the type and quality in a snap!",
+    description: "Snap a pic, know your rice! Instantly ID long, short, or broken grains and unlock quality insights.",
     href: "/rice-classification",
     icon: Wheat,
-    bgColor: "bg-yellow-50", // Kept for icon background, card itself uses theme.
-    textColor: "text-yellow-700", // Kept for icon color
-    borderColor: "border-yellow-300", // Kept for card border accents
   },
   {
     title: "Plant Disease Detection",
-    description: "Worried about your crop's health? Upload an image and our AI vigilantly scans for diseases, offering early warnings.",
+    description: "Crop concerns? Upload an image for an AI-driven disease scan. Catch issues early, protect your yield.",
     href: "/disease-detection",
     icon: SearchCheck,
-    bgColor: "bg-red-50",
-    textColor: "text-red-700",
-    borderColor: "border-red-300",
   },
   {
     title: "Plant Health Check",
-    description: "Give your rice plants a quick check-up! Get an AI-powered health score and vital insights from just one photo.",
+    description: "Your rice plant's personal wellness score! Get AI-powered health insights from a single photo.",
     href: "/health-check",
     icon: HeartPulse,
-    bgColor: "bg-green-50",
-    textColor: "text-green-700",
-    borderColor: "border-green-300",
   },
 ];
 
@@ -65,15 +56,15 @@ export default function DashboardPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featureCards.map((feature, index) => (
-          <Link href={feature.href} key={feature.title}>
+          <Link href={feature.href} key={feature.title} className="group">
             <Card 
-              className={`h-full flex flex-col border-2 ${feature.borderColor} hover:border-primary group animate-fade-in-up`}
+              className="h-full flex flex-col border border-border hover:border-primary hover:shadow-lg animate-fade-in-up transition-all duration-300"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <CardHeader className="flex-shrink-0">
                 <div className="flex items-center gap-3">
-                  <feature.icon className={`h-10 w-10 p-2 rounded-lg ${feature.bgColor} ${feature.textColor}`} />
-                  <CardTitle className={`text-2xl font-headline ${feature.textColor}`}>{feature.title}</CardTitle>
+                  <feature.icon className="h-10 w-10 p-2 rounded-lg bg-primary/10 text-primary" />
+                  <CardTitle className="text-2xl font-headline text-foreground group-hover:text-primary transition-colors duration-300">{feature.title}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow pt-4 flex flex-col justify-center">
@@ -82,7 +73,7 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardContent>
               <CardContent className="mt-auto pt-0">
-                  <div className="flex items-center justify-end text-sm font-medium text-accent group-hover:text-primary transition-colors">
+                  <div className="flex items-center justify-end text-sm font-medium text-accent group-hover:text-primary transition-colors duration-300">
                   Go to {feature.title} <ArrowRight className="ml-2 h-4 w-4" />
                 </div>
               </CardContent>

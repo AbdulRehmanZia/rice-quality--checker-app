@@ -4,40 +4,40 @@
 
 @layer base {
   :root {
-    --background: 50 15% 95%; /* #FDFDF4 */
-    --foreground: 50 10% 20%; /* Darker tone for text on light background */
-    --card: 50 15% 100%; /* Slightly whiter than background for cards */
+    --background: 50 20% 97%; /* Lighter, cleaner off-white */
+    --foreground: 50 10% 20%; 
+    --card: 50 20% 100%; /* Pure white for cards for better contrast */
     --card-foreground: 50 10% 20%;
-    --popover: 50 15% 100%;
+    --popover: 50 20% 100%;
     --popover-foreground: 50 10% 20%;
-    --primary: 50 70% 50%; /* #B89B29 */
-    --primary-foreground: 50 100% 10%; /* Dark text on primary */
-    --secondary: 50 20% 85%; /* Lighter, less saturated gold for secondary elements */
-    --secondary-foreground: 50 70% 30%; /* Darker gold for text on secondary */
-    --muted: 50 15% 90%; /* Muted version of background */
-    --muted-foreground: 50 10% 45%;
-    --accent: 20 70% 40%; /* #B85929 */
-    --accent-foreground: 20 100% 95%; /* Light text on accent */
+    --primary: 45 80% 58%; /* Brighter, more vibrant gold */
+    --primary-foreground: 45 100% 10%; 
+    --secondary: 50 20% 88%; /* Adjusted for new background */
+    --secondary-foreground: 50 70% 35%;
+    --muted: 50 20% 92%; /* Adjusted for new background */
+    --muted-foreground: 50 10% 40%; /* Slightly darker for better readability */
+    --accent: 28 75% 52%; /* Richer, more vibrant terracotta/orange-brown */
+    --accent-foreground: 28 100% 95%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 50 15% 85%;
-    --input: 50 15% 88%;
-    --ring: 50 70% 50%; /* Primary color for rings */
-    --chart-1: 50 70% 50%;
-    --chart-2: 20 70% 40%;
-    --chart-3: 50 50% 60%;
-    --chart-4: 20 50% 50%;
-    --chart-5: 50 30% 70%;
+    --border: 50 20% 88%; /* Align with new secondary/muted */
+    --input: 50 20% 90%; /* Align with new muted */
+    --ring: 45 80% 58%; /* Primary color for rings */
+    --chart-1: 45 80% 58%;
+    --chart-2: 28 75% 52%;
+    --chart-3: 45 60% 65%;
+    --chart-4: 28 55% 60%;
+    --chart-5: 45 40% 75%;
     --radius: 0.5rem;
 
-    --sidebar-background: 50 15% 92%; /* Slightly darker than main background for sidebar */
+    --sidebar-background: 50 20% 94%; /* Align with new background scheme */
     --sidebar-foreground: 50 10% 25%;
-    --sidebar-primary: 50 70% 50%; /* Gold for active/hover states */
-    --sidebar-primary-foreground: 50 100% 10%;
-    --sidebar-accent: 50 20% 80%; /* Lighter gold for accents in sidebar */
-    --sidebar-accent-foreground: 50 70% 30%;
-    --sidebar-border: 50 15% 80%;
-    --sidebar-ring: 20 70% 40%; /* Accent color for rings in sidebar */
+    --sidebar-primary: 45 80% 58%; 
+    --sidebar-primary-foreground: 45 100% 10%;
+    --sidebar-accent: 50 20% 85%; 
+    --sidebar-accent-foreground: 50 70% 35%;
+    --sidebar-border: 50 20% 85%;
+    --sidebar-ring: 28 75% 52%; 
 
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
@@ -54,33 +54,33 @@
     --card-foreground: 50 15% 95%;
     --popover: 50 10% 15%;
     --popover-foreground: 50 15% 95%;
-    --primary: 50 70% 50%;
-    --primary-foreground: 50 100% 10%;
+    --primary: 45 70% 55%; /* Adjusted dark primary */
+    --primary-foreground: 45 100% 10%;
     --secondary: 50 15% 25%;
     --secondary-foreground: 50 70% 70%;
     --muted: 50 10% 20%;
     --muted-foreground: 50 15% 65%;
-    --accent: 20 70% 50%;
-    --accent-foreground: 20 100% 95%;
+    --accent: 28 70% 55%; /* Adjusted dark accent */
+    --accent-foreground: 28 100% 95%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
     --border: 50 10% 25%;
     --input: 50 10% 22%;
-    --ring: 50 70% 50%;
-    --chart-1: 50 70% 50%;
-    --chart-2: 20 70% 50%;
-    --chart-3: 50 50% 60%;
-    --chart-4: 20 50% 50%;
-    --chart-5: 50 30% 70%;
+    --ring: 45 70% 55%;
+    --chart-1: 45 70% 55%;
+    --chart-2: 28 70% 55%;
+    --chart-3: 45 50% 60%;
+    --chart-4: 28 50% 50%;
+    --chart-5: 45 30% 70%;
 
     --sidebar-background: 50 10% 12%;
     --sidebar-foreground: 50 15% 92%;
-    --sidebar-primary: 50 70% 50%;
-    --sidebar-primary-foreground: 50 100% 10%;
+    --sidebar-primary: 45 70% 55%;
+    --sidebar-primary-foreground: 45 100% 10%;
     --sidebar-accent: 50 15% 22%;
     --sidebar-accent-foreground: 50 70% 70%;
     --sidebar-border: 50 10% 22%;
-    --sidebar-ring: 20 70% 50%;
+    --sidebar-ring: 28 70% 55%;
 
     --shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.02);
     --shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.04), 0 2px 4px -2px rgb(255 255 255 / 0.04);

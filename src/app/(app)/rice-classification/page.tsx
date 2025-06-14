@@ -92,7 +92,16 @@ export default function RiceClassificationPage() {
             <div>
               <Label htmlFor="confidence" className="text-sm font-medium flex items-center gap-1"><Percent /> Confidence Level</Label>
               <div className="flex items-center gap-2 mt-1">
-                <Progress id="confidence" value={classificationResult.confidence * 100} className="w-full h-3" />
+                <Progress 
+                    id="confidence" 
+                    value={classificationResult.confidence * 100} 
+                    className="w-full h-3 rounded-full overflow-hidden bg-muted"
+                >
+                   <div 
+                      className="h-full transition-all duration-500 ease-out bg-gradient-to-r from-primary/70 to-primary" 
+                      style={{ width: `${classificationResult.confidence * 100}%`}} 
+                    />
+                </Progress>
                 <span className="text-sm font-semibold text-primary">{(classificationResult.confidence * 100).toFixed(0)}%</span>
               </div>
             </div>
