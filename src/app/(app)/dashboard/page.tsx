@@ -1,3 +1,4 @@
+
 // src/app/(app)/dashboard/page.tsx
 "use client";
 
@@ -6,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import Link from 'next/link';
 import { ArrowRight, Wheat, SearchCheck, HeartPulse, Lightbulb } from 'lucide-react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+// import Image from 'next/image'; // Image component no longer needed here
 
 // Cannot export metadata from client component. Move to parent or use generateMetadata.
 // For now, removing. If needed, this page can be refactored or metadata moved.
@@ -18,33 +19,27 @@ import Image from 'next/image';
 const featureCards = [
   {
     title: "Rice Classification",
-    description: "Classify rice grains as long, short, or broken using AI.",
+    description: "Unlock the secrets of your rice! Instantly classify grains as long, short, or broken with our smart AI analysis.",
     href: "/rice-classification",
     icon: Wheat,
-    imageSrc: "https://placehold.co/600x400.png",
-    imageHint: "rice grains",
     bgColor: "bg-yellow-50",
     textColor: "text-yellow-700",
     borderColor: "border-yellow-300",
   },
   {
     title: "Plant Disease Detection",
-    description: "Identify potential diseases in your rice plants from an image.",
+    description: "Is your rice crop under threat? Upload an image and let our AI quickly identify potential diseases, helping you act fast.",
     href: "/disease-detection",
     icon: SearchCheck,
-    imageSrc: "https://placehold.co/600x400.png",
-    imageHint: "plant leaf",
     bgColor: "bg-red-50",
     textColor: "text-red-700",
     borderColor: "border-red-300",
   },
   {
     title: "Plant Health Check",
-    description: "Get a health score for your rice plants based on visual analysis.",
+    description: "Curious about your rice plants' vitality? Get an instant AI-powered health score and insights with a single photo.",
     href: "/health-check",
     icon: HeartPulse,
-    imageSrc: "https://placehold.co/600x400.png",
-    imageHint: "healthy plant",
     bgColor: "bg-green-50",
     textColor: "text-green-700",
     borderColor: "border-green-300",
@@ -80,7 +75,7 @@ export default function DashboardPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featureCards.map((feature) => (
-          <Link href={feature.href} key={feature.title} passHref>
+          <Link href={feature.href} key={feature.title}>
             <Card className={`shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 h-full flex flex-col border-2 ${feature.borderColor} hover:border-primary group`}>
               <CardHeader className="flex-shrink-0">
                 <div className="flex items-center gap-3">
@@ -88,17 +83,7 @@ export default function DashboardPage() {
                   <CardTitle className={`text-2xl font-headline ${feature.textColor}`}>{feature.title}</CardTitle>
                 </div>
               </CardHeader>
-              <div className="relative w-full h-48 flex-shrink-0">
-                  <Image 
-                  src={feature.imageSrc} 
-                  alt={feature.title} 
-                  fill={true}
-                  style={{objectFit: 'cover'}}
-                  className="rounded-t-md"
-                  data-ai-hint={feature.imageHint}
-                />
-              </div>
-              <CardContent className="flex-grow pt-4">
+              <CardContent className="flex-grow pt-4 flex flex-col justify-center"> {/* Adjusted for better text centering if needed */}
                 <CardDescription className="text-base text-muted-foreground font-body mb-4">
                   {feature.description}
                 </CardDescription>
