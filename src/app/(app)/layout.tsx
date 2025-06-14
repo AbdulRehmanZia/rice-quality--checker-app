@@ -2,7 +2,7 @@
 "use client";
 
 import type React from 'react';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { AppLogo } from '@/components/shared/AppLogo';
@@ -79,19 +79,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <Link href={item.href} passHref>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={pathname === item.href}
-                    tooltip={{ children: item.label, className: "font-body" }}
-                    className="justify-start font-medium"
-                  >
-                    <>
-                      <item.icon className="h-5 w-5" />
-                      <span className="font-body">{item.label}</span>
-                    </>
-                  </SidebarMenuButton>
-                </Link>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === item.href}
+                  tooltip={{ children: item.label, className: "font-body" }}
+                  className="justify-start font-medium"
+                >
+                  <Link href={item.href}>
+                    <item.icon className="h-5 w-5" />
+                    <span className="font-body">{item.label}</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
@@ -102,7 +100,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="w-full justify-start gap-2 px-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:w-auto">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage alt={currentUser.email} /> {/* src and data-ai-hint removed */}
+                  {/* AvatarImage removed as per previous request to remove all static images */}
                   <AvatarFallback>{getInitials(currentUser.email)}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col items-start group-data-[collapsible=icon]:hidden">
@@ -139,7 +137,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         </header>
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-auto">
-          {children}
+          <div className="animate-fade-in">{children}</div>
         </main>
       </SidebarInset>
     </SidebarProvider>

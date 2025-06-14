@@ -6,29 +6,20 @@ import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
 import { ArrowRight, Wheat, SearchCheck, HeartPulse, Lightbulb } from 'lucide-react';
-import type { Metadata } from 'next';
-// import Image from 'next/image'; // Image component no longer needed here
-
-// Cannot export metadata from client component. Move to parent or use generateMetadata.
-// For now, removing. If needed, this page can be refactored or metadata moved.
-// export const metadata: Metadata = {
-//   title: 'Dashboard - SafeRice Analyzer',
-// };
-
 
 const featureCards = [
   {
     title: "Rice Classification",
-    description: "Unlock the secrets of your rice! Instantly classify grains as long, short, or broken with our smart AI analysis.",
+    description: "Got rice? Let our AI instantly tell you if it's long, short, or broken. Uncover the type and quality in a snap!",
     href: "/rice-classification",
     icon: Wheat,
-    bgColor: "bg-yellow-50",
-    textColor: "text-yellow-700",
-    borderColor: "border-yellow-300",
+    bgColor: "bg-yellow-50", // Kept for icon background, card itself uses theme.
+    textColor: "text-yellow-700", // Kept for icon color
+    borderColor: "border-yellow-300", // Kept for card border accents
   },
   {
     title: "Plant Disease Detection",
-    description: "Is your rice crop under threat? Upload an image and let our AI quickly identify potential diseases, helping you act fast.",
+    description: "Worried about your crop's health? Upload an image and our AI vigilantly scans for diseases, offering early warnings.",
     href: "/disease-detection",
     icon: SearchCheck,
     bgColor: "bg-red-50",
@@ -37,7 +28,7 @@ const featureCards = [
   },
   {
     title: "Plant Health Check",
-    description: "Curious about your rice plants' vitality? Get an instant AI-powered health score and insights with a single photo.",
+    description: "Give your rice plants a quick check-up! Get an AI-powered health score and vital insights from just one photo.",
     href: "/health-check",
     icon: HeartPulse,
     bgColor: "bg-green-50",
@@ -51,13 +42,12 @@ export default function DashboardPage() {
   const { currentUser } = useAuth();
 
   if (!currentUser) {
-    // This should ideally be handled by the layout, but as a fallback:
     return <p>Loading user data or redirecting...</p>;
   }
 
   return (
     <div className="space-y-8">
-      <Card className="shadow-lg border-primary/20">
+      <Card className="animate-fade-in-up border-primary/20">
         <CardHeader>
           <CardTitle className="text-4xl font-headline text-primary">
             Welcome to SafeRice Analyzer, {currentUser.email.split('@')[0]}!
@@ -74,16 +64,19 @@ export default function DashboardPage() {
       </Card>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {featureCards.map((feature) => (
+        {featureCards.map((feature, index) => (
           <Link href={feature.href} key={feature.title}>
-            <Card className={`shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 h-full flex flex-col border-2 ${feature.borderColor} hover:border-primary group`}>
+            <Card 
+              className={`h-full flex flex-col border-2 ${feature.borderColor} hover:border-primary group animate-fade-in-up`}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               <CardHeader className="flex-shrink-0">
                 <div className="flex items-center gap-3">
                   <feature.icon className={`h-10 w-10 p-2 rounded-lg ${feature.bgColor} ${feature.textColor}`} />
                   <CardTitle className={`text-2xl font-headline ${feature.textColor}`}>{feature.title}</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent className="flex-grow pt-4 flex flex-col justify-center"> {/* Adjusted for better text centering if needed */}
+              <CardContent className="flex-grow pt-4 flex flex-col justify-center">
                 <CardDescription className="text-base text-muted-foreground font-body mb-4">
                   {feature.description}
                 </CardDescription>
@@ -98,7 +91,7 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <Card className="shadow-lg mt-8 border-accent/20">
+      <Card className="mt-8 border-accent/20 animate-fade-in-up" style={{ animationDelay: `${featureCards.length * 100}ms` }}>
         <CardHeader>
           <div className="flex items-center gap-3">
             <Lightbulb className="h-8 w-8 text-accent" />

@@ -10,8 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ShieldAlert, ListChecks, Activity, HelpCircle, Pill } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { getMedicineInfo } from '@/lib/data'; // MedicineInfo type no longer needed here
-// Image import removed
+import { getMedicineInfo } from '@/lib/data';
 import { LoadingSpinner } from '@/components/shared/LoadingSpinner';
 
 export default function DiseaseDetectionPage() {
@@ -52,7 +51,7 @@ export default function DiseaseDetectionPage() {
 
   return (
     <div className="container mx-auto py-8 space-y-8">
-      <Card className="shadow-xl">
+      <Card className="animate-fade-in-up">
         <CardHeader>
           <CardTitle className="text-3xl font-headline text-primary">Plant Disease Detection</CardTitle>
           <CardDescription className="text-lg">
@@ -75,7 +74,7 @@ export default function DiseaseDetectionPage() {
       {isLoading && <LoadingSpinner message="Analyzing plant image..." className="my-8" />}
 
       {detectionResult && (
-        <Card className="shadow-lg animate-in fade-in-50 duration-500">
+        <Card className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-primary-dark flex items-center gap-2">
               <ListChecks /> Diagnosis Report
@@ -125,7 +124,7 @@ export default function DiseaseDetectionPage() {
       )}
       
       {detectionResult && detectionResult.diseaseDiagnosis.diseaseDetected && currentMedicineInfo.length > 0 && (
-        <Card className="shadow-lg animate-in fade-in-50 duration-700">
+        <Card className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-primary-dark flex items-center gap-2">
               <Pill /> Potential Treatment Information
@@ -140,14 +139,13 @@ export default function DiseaseDetectionPage() {
                 <AccordionItem value={`item-${index}`} key={index}>
                   <AccordionTrigger className="hover:no-underline">
                     <div className="flex items-center gap-3">
-                       {/* Image div removed */}
                        <div>
                         <h4 className="text-lg font-semibold text-left">{info.name}</h4>
                         <p className="text-sm text-muted-foreground text-left">Type: {info.type}</p>
                        </div>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="space-y-3 pl-4 pt-2 pb-4"> {/* Removed ml adjustment */}
+                  <AccordionContent className="space-y-3 pl-4 pt-2 pb-4">
                     <div>
                       <h5 className="font-semibold">Usage:</h5>
                       <p className="text-sm text-muted-foreground">{info.usage}</p>

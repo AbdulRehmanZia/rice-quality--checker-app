@@ -9,8 +9,7 @@ import { classifyRice, type ClassifyRiceOutput } from '@/ai/flows/classify-rice'
 import { useToast } from '@/hooks/use-toast';
 import { BarChart, ChefHat, Percent, Tag, ThumbsUp, ThumbsDown, Info } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { getCuisineIdeas } from '@/lib/data'; // CuisineIdea type no longer needed here
-// Image import removed
+import { getCuisineIdeas } from '@/lib/data';
 import { LoadingSpinner } from '@/components/shared/LoadingSpinner';
 import { Label } from '@/components/ui/label';
 
@@ -23,7 +22,7 @@ export default function RiceClassificationPage() {
 
   const handleCapture = (dataUri: string) => {
     setImageDataUri(dataUri);
-    setClassificationResult(null); // Reset previous results
+    setClassificationResult(null); 
   };
 
   const handleClassify = async () => {
@@ -49,7 +48,7 @@ export default function RiceClassificationPage() {
 
   return (
     <div className="container mx-auto py-8 space-y-8">
-      <Card className="shadow-xl">
+      <Card className="animate-fade-in-up">
         <CardHeader>
           <CardTitle className="text-3xl font-headline text-primary">Rice Grain Classification</CardTitle>
           <CardDescription className="text-lg">
@@ -72,7 +71,7 @@ export default function RiceClassificationPage() {
       {isLoading && <LoadingSpinner message="Analyzing rice grains..." className="my-8" />}
 
       {classificationResult && (
-        <Card className="shadow-lg animate-in fade-in-50 duration-500">
+        <Card className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-primary-dark flex items-center gap-2">
               <Tag />Classification Result
@@ -112,7 +111,7 @@ export default function RiceClassificationPage() {
       )}
 
       {classificationResult && currentCuisineIdeas.length > 0 && (
-         <Card className="shadow-lg animate-in fade-in-50 duration-700">
+         <Card className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-primary-dark flex items-center gap-2">
               <ChefHat /> Cuisine Ideas for {classificationResult.classification} Rice
@@ -123,8 +122,7 @@ export default function RiceClassificationPage() {
           </CardHeader>
           <CardContent className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentCuisineIdeas.map((idea, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow flex flex-col">
-                {/* Image div removed */}
+              <Card key={index} className="overflow-hidden flex flex-col">
                 <CardHeader>
                   <CardTitle className="text-xl font-headline">{idea.name}</CardTitle>
                 </CardHeader>

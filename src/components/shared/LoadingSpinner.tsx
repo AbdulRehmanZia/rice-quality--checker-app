@@ -22,7 +22,7 @@ export function LoadingSpinner({ size = 'md', className, message }: LoadingSpinn
           sizeClasses[size]
         )}
       />
-      {message && <p className="text-muted-foreground font-medium">{message}</p>}
+      {message && <p className="text-muted-foreground font-medium animate-pulse">{message}</p>}
     </div>
   );
 }

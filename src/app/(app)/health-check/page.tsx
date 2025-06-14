@@ -52,7 +52,7 @@ export default function HealthCheckPage() {
 
   return (
     <div className="container mx-auto py-8 space-y-8">
-      <Card className="shadow-xl">
+      <Card className="animate-fade-in-up">
         <CardHeader>
           <CardTitle className="text-3xl font-headline text-primary">Plant Health Check</CardTitle>
           <CardDescription className="text-lg">
@@ -75,7 +75,7 @@ export default function HealthCheckPage() {
       {isLoading && <LoadingSpinner message="Assessing plant health..." className="my-8" />}
 
       {healthResult && healthStatus && (
-        <Card className="shadow-lg animate-in fade-in-50 duration-500">
+        <Card className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-primary-dark flex items-center gap-2">
               <Zap /> Health Score Report
@@ -96,10 +96,10 @@ export default function HealthCheckPage() {
             <Progress value={healthResult.healthScore} className="h-4 [&>div]:bg-gradient-to-r [&>div]:from-red-500 [&>div]:via-yellow-500 [&>div]:to-green-500" />
 
             <div className={`p-4 border-l-4 rounded-md bg-opacity-10 ${
-                healthResult.healthScore >= 80 ? 'border-green-500 bg-green-500' :
-                healthResult.healthScore >= 60 ? 'border-lime-500 bg-lime-500' :
-                healthResult.healthScore >= 40 ? 'border-yellow-500 bg-yellow-500' :
-                'border-red-500 bg-red-500'
+                healthResult.healthScore >= 80 ? 'border-green-500 bg-green-500/20' : /* Adjusted opacity */
+                healthResult.healthScore >= 60 ? 'border-lime-500 bg-lime-500/20' : /* Adjusted opacity */
+                healthResult.healthScore >= 40 ? 'border-yellow-500 bg-yellow-500/20' : /* Adjusted opacity */
+                'border-red-500 bg-red-500/20' /* Adjusted opacity */
               }`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Info className={`h-5 w-5 ${healthStatus.color}`} />
